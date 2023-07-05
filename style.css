@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;700&family=Open+Sans:wght@400;700&display=swap');
 
-body {
+html, body {
 	margin: 0;
 	font-family: 'Open Sans', sans-serif;
+	display: flex;
+	flex-direction: column;
 	height: 100vh;
 }
 
@@ -36,11 +38,12 @@ body {
 }
 .container {
 	display: flex;
+	height: 100%;
 }
 
 .map {
-	display: flex;
-	flex-direction: row;
+	/*display: flex;
+	flex-direction: row;*/
 	width: 85%;
 }
 
@@ -49,9 +52,10 @@ body {
 	flex-direction: column;
 	justify-content: flex-end;
 	width: 15%;
+	flex-grow: 1;
 }
 #map {
-	height: 800px;
+	height: 100%;
 	width: 100%;
 }
 
