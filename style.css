@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;700&family=Open+Sans:wght@400;700&display=swap');
+
+body {
+	margin: 0;
+	font-family: 'Open Sans', sans-serif;
+	height: 100vh;
+}
+
+.navbar {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	font-size: 1rem;
+}
+
+#input {
+	font-size: 1rem;
+}
+
+.left {
+	display: flex;
+	justify-content: flex-start;
+	width: 100%;
+}
+
+.middle {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+}
+
+.right {
+	display: flex;
+	justify-content: flex-end;
+	width: 100%;
+}
+.container {
+	display: flex;
+}
+
+.map {
+	display: flex;
+	flex-direction: row;
+	width: 85%;
+}
+
+.sidebar {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	width: 15%;
+}
+#map {
+	height: 800px;
+	width: 100%;
+}
+
