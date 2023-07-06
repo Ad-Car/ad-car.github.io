@@ -55,6 +55,11 @@ html, body {
 	align-items: center;
 	width: 20%;
 }
+
+.sidebar.hidden {
+	opacity: 0;
+}
+
 #map {
 	height: 100%;
 	width: 100%;

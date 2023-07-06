@@ -2,11 +2,13 @@ let existingIntervals = false
 let earthworks
 let fileContent
 let activeLayer = document.getElementById('visible-layer')
+let sidebar = document.querySelector('.sidebar')
 
 const map = L.map('map').setView([52.561928, -1.464854],7)
 
 L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', { attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors' }).addTo(map);
 
+sidebar.classList.add('hidden')
 
 map.addEventListener('click', function() {
 	existingIntervals? existingIntervals = false : existingIntervals = true
@@ -24,9 +26,16 @@ document.getElementById('input').addEventListener('change', function(e) {
 	let file = document.getElementById('input').files[0];
 	(async () => {
 		fileContent = await file.text();
+
+		if(earthworks) earthworks.remove()
+
 		earthworks = L.geoJSON(JSON.parse(fileContent),{style:styleClientLinears, onEachFeature:processClientLinears}).addTo(map)
-		map.fitBounds(earthworks.getBounds())
+		map.fitBounds(earthworks.getBounds());
+
+		activeLayer.innerHTML=''
 		activeLayer.insertAdjacentHTML('beforeend', 'Earthworks classified by proposed interval');
+
+		sidebar.classList.remove('hidden')
 	})()
 });
 
