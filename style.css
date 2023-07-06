@@ -44,18 +44,22 @@ html, body {
 .map {
 	/*display: flex;
 	flex-direction: row;*/
-	width: 85%;
+	width: 80%;
 }
 
 .sidebar {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
-	width: 15%;
-	flex-grow: 1;
+	align-items: center;
+	width: 20%;
 }
 #map {
 	height: 100%;
 	width: 100%;
+}
+
+#legend p {
+	text-align: center;	
 }
 
