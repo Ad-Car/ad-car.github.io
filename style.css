@@ -13,6 +13,8 @@ html, body {
 	flex-direction: row;
 	align-items: center;
 	font-size: 1rem;
+	background-color: #7e7e7d;
+	color: #f2f3f0;
 }
 
 #input {
@@ -42,8 +44,6 @@ html, body {
 }
 
 .map {
-	/*display: flex;
-	flex-direction: row;*/
 	width: 80%;
 }
 
@@ -59,7 +59,11 @@ html, body {
 	width: 100%;
 }
 
-#legend p {
+.legend-title {
 	text-align: center;	
 }
-
+.visible-layer {
+	text-align: start;
+	font-size: 0.75rem;
+	font-weight: bold;
+}
