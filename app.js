@@ -14,12 +14,8 @@ map.addEventListener('click', function() {
 	existingIntervals? existingIntervals = false : existingIntervals = true
 	earthworks.remove()
 	earthworks = L.geoJSON(JSON.parse(fileContent),{style:styleClientLinears, onEachFeature:processClientLinears}).addTo(map)
-	if(existingIntervals) {
-		activeLayer.innerHTML=''
-		activeLayer.insertAdjacentHTML('beforeend', 'Earthworks classified by existing interval')}
-	else {
-		activeLayer.innerHTML=''
-		activeLayer.insertAdjacentHTML('beforeend', 'Earthworks classified by proposed interval')}
+
+	toggleLegend(existingIntervals)
 })
 
 document.getElementById('input').addEventListener('change', function(e) {
@@ -32,8 +28,8 @@ document.getElementById('input').addEventListener('change', function(e) {
 		earthworks = L.geoJSON(JSON.parse(fileContent),{style:styleClientLinears, onEachFeature:processClientLinears}).addTo(map)
 		map.fitBounds(earthworks.getBounds());
 
-		activeLayer.innerHTML=''
-		activeLayer.insertAdjacentHTML('beforeend', 'Earthworks classified by proposed interval');
+		existingIntervals = false
+		toggleLegend(existingIntervals)
 
 		sidebar.classList.remove('hidden')
 	})()
@@ -44,20 +40,29 @@ function styleClientLinears(json) {
 	let att = json.properties
 
 	if(!existingIntervals) {
-	if(att.FIF >= 1 && att.FIF <=3) return {color:'#ff860d'}
-	if(att.FIF >= 4 && att.FIF <=7) return {color:'#5983b0'}
-	if(att.FIF >= 8 && att.FIF <=9) return {color:'#81aca6'}
-	if(att.FIF === 10) return {color:'#3faf46'}
+		if(att.FIF >= 1 && att.FIF <=3) return {color:'#ff860d'}
+		if(att.FIF >= 4 && att.FIF <=7) return {color:'#5983b0'}
+		if(att.FIF >= 8 && att.FIF <=9) return {color:'#81aca6'}
+		if(att.FIF === 10) return {color:'#3faf46'}
 	} else {
-	if(att.PIRP >= 1 && att.PIRP <=3) return {color:'#ff860d'}
-	if(att.PIRP >= 4 && att.PIRP <=7) return {color:'#5983b0'}
-	if(att.PIRP >= 8 && att.PIRP <=9) return {color:'#81aca6'}
-	if(att.PIRP === 10) return {color:'#3faf46'}
+		if(att.PIRP >= 1 && att.PIRP <=3) return {color:'#ff860d'}
+		if(att.PIRP >= 4 && att.PIRP <=7) return {color:'#5983b0'}
+		if(att.PIRP >= 8 && att.PIRP <=9) return {color:'#81aca6'}
+		if(att.PIRP === 10) return {color:'#3faf46'}
 	}
 }
 
 function processClientLinears(json, lyr) {
 	let att = json.properties
 	lyr.bindTooltip(att.id+": "+att.PIRP+" > "+att.PSRF+ " [" +att.FIF+"]", {direction:"top"})
+}
+
+function toggleLegend(existingIntervals) {
+	if(existingIntervals) {
+		activeLayer.innerHTML=''
+		activeLayer.insertAdjacentHTML('beforeend', 'Earthworks classified by existing interval')}
+	else {
+		activeLayer.innerHTML=''
+		activeLayer.insertAdjacentHTML('beforeend', 'Earthworks classified by proposed interval')}
 }
 
