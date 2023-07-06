@@ -1,6 +1,7 @@
 let existingIntervals = false
 let earthworks
 let fileContent
+let activeLayer = document.getElementById('visible-layer')
 
 const map = L.map('map').setView([52.561928, -1.464854],7)
 
@@ -11,6 +12,12 @@ map.addEventListener('click', function() {
 	existingIntervals? existingIntervals = false : existingIntervals = true
 	earthworks.remove()
 	earthworks = L.geoJSON(JSON.parse(fileContent),{style:styleClientLinears, onEachFeature:processClientLinears}).addTo(map)
+	if(existingIntervals) {
+		activeLayer.innerHTML=''
+		activeLayer.insertAdjacentHTML('beforeend', 'Earthworks classified by existing interval')}
+	else {
+		activeLayer.innerHTML=''
+		activeLayer.insertAdjacentHTML('beforeend', 'Earthworks classified by proposed interval')}
 })
 
 document.getElementById('input').addEventListener('change', function(e) {
@@ -19,6 +26,7 @@ document.getElementById('input').addEventListener('change', function(e) {
 		fileContent = await file.text();
 		earthworks = L.geoJSON(JSON.parse(fileContent),{style:styleClientLinears, onEachFeature:processClientLinears}).addTo(map)
 		map.fitBounds(earthworks.getBounds())
+		activeLayer.insertAdjacentHTML('beforeend', 'Earthworks classified by proposed interval');
 	})()
 });
 

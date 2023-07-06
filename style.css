@@ -13,8 +13,9 @@ html, body {
 	flex-direction: row;
 	align-items: center;
 	font-size: 1rem;
-	background-color: #7e7e7d;
+	background-color: #0e2127;
 	color: #f2f3f0;
+	font-weight: bold;
 }
 
 #input {
@@ -62,8 +63,14 @@ html, body {
 .legend-title {
 	text-align: center;	
 }
-.visible-layer {
+
+#visible-layer {
 	text-align: start;
 	font-size: 0.75rem;
 	font-weight: bold;
 }
+
+.info {
+	font-size: 0.75rem;
+}
+
