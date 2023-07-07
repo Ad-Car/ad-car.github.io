@@ -58,11 +58,6 @@ function processClientLinears(json, lyr) {
 }
 
 function toggleLegend(existingIntervals) {
-	if(existingIntervals) {
-		activeLayer.innerHTML=''
-		activeLayer.insertAdjacentHTML('beforeend', 'Earthworks classified by existing interval')}
-	else {
-		activeLayer.innerHTML=''
-		activeLayer.insertAdjacentHTML('beforeend', 'Earthworks classified by proposed interval')}
+  const status = existingIntervals ? "existing" : "proposed"
+  activeLayer.innerText = `Earthworks classified by ${status} interval`;
 }
-
