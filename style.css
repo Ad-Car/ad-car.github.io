@@ -65,8 +65,12 @@ html, body {
 	width: 100%;
 }
 
+.legend {
+  padding: 1rem;
+}
+
 .legend-title {
-	text-align: center;	
+	text-align: center;
 }
 
 #visible-layer {
@@ -78,4 +82,3 @@ html, body {
 .info {
 	font-size: 0.75rem;
 }
-
